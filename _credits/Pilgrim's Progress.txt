@@ -1,0 +1,56 @@
+Patapon Spotzone Make a Level Title Jam
+
+A Pilgrim's Progress (by Beta Squared)
+https://www.youtube.com/watch?v=KbQEfZzPwKk&list=PLQhrpbbm5TDKl0J7U25FZoS23xCmenNoH
+- Mario/Demo only, other characters might break the game
+- NO CAPES ALLOWED
+- If raocow eventually plays this, please change enemies into Demo universe adjacent ones, otherwise it's basically vanilla
+- If things have broken, feel free to let me know how to fix it
+
+Screen 9: Black Tunnel
+Music: N/A
+- First screen, added later because oops
+- A seemingly short black tunnel you just go right to enter the level (for shock value probably)
+- Intentional Black Background and No Music
+
+Screen 0: The Underwhere, Entrance
+Music: Super Paper Mario - The Underwhere (https://youtu.be/j9jk9AOcn6k)
+- Friendly NPCs to chat with
+- A clear attempt copy recreation of Super Paper Mario's 7-1
+
+Screen 1: The Underwhere, Part 2
+Music: Super Paper Mario - The Underwhere (https://youtu.be/j9jk9AOcn6k)
+- Screen 2 of SPM 7-1, but very short
+- Meant to be a transition area
+
+Screen 2: Slough of Despond
+Music: EarthBound - Deep Darkness (https://youtu.be/g_qJiMc-9i8)
+- Starts out as 7-1's pipe room, but heads into a water based level
+
+Screen 3: Difficulty Hill
+Music: Super Mario 3D World - Lava Rock Lair (https://youtu.be/1YMQl2GJfBM)
+- Level has wrap-around horizontally
+- Could not figure out how to make ladder appear after climbing through the quicksand, so clear pipe in its place as a shortcut
+
+Screen 4: The Overthere Stair, but its Under Maintenance, so just use the Elevator
+Music: Super Paper Mario - The Overthere (https://youtu.be/TW7cQJBxr4k)
+- Mild carbon copy of SPM 7-3
+- Checkpoint, as it marks the half-way point
+
+Screen 5: Overthere Elevator Climb
+Music: Mario Strikers Charged - Pause Menu (https://youtu.be/51klt2lnUzs)
+- Makes specific mentions of higher floors being under construction/revamp (Palace Beautiful, Vanity Fair, Valley of the Shadow of Death)
+
+Screen 6: Doubting Castle
+Music: Wario Land: Shake It! - Airytale Castle (https://youtu.be/-HmlHOKmmMA)
+- The main trick is the exit is close by
+- The key is a red herring
+
+Screen 7: Celestial City
+Music: Wario Land: Shake It! - Airytale Castle (https://youtu.be/-HmlHOKmmMA)
+- Homage to the Western Air Temple from Avatar: The Last Airbender
+- Final screen before the end
+
+Screen 8: Gates of the Overthere
+Music: Super Paper Mario - Overthere Shrine (https://youtu.be/rpkKJKggKBE)
+- End of the Level

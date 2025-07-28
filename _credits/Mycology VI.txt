@@ -1,0 +1,10 @@
+level by rixi
+
+parallax background:
+- Terraria (glowing mushroom biome)
+
+music: 
+- Mushroom Men: The Spore Wars OST by Les Claypool
+
+code:
+- respawnRooms.lua by MrDoubleA

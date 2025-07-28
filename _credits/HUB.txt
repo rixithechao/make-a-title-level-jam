@@ -1,0 +1,5 @@
+music:
+- Soulful Pines of Verdane by icrawfish (https://www.smwcentral.net/?p=section&a=details&id=40093)
+
+code:
+- littleDialogue.lua by MrDoubleA

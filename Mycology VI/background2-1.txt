@@ -1,0 +1,19 @@
+fill-color = black
+[background2]
+; Name that will appear in the editor
+name = "SMB3 Blocks"
+; Backdrop fill color
+
+
+; Add layers here, for example:
+
+[Layer1]
+depth = INFINITE
+img = "bg_00.png"
+repeatX = true
+repeatY = true
+
+[Layer2]
+depth = 200
+img = "bg_01.png"
+repeatX = true
