@@ -1,0 +1,8 @@
+music:
+- Circuit Speedway (Kirby and the Forgotten Land OST) by Yuki Shimooka
+- Grand Finale, Lemmy Battle (Paper Mario: Color Splash OST) by Shoh Murakami, Fumihiro Isobe, Takeru Kanazaki, scatgoto
+
+
+Lemmy NPC:
+- original script by KateBulka, edited by DRACalgar Law
+- sprites ripped by Barack Obama

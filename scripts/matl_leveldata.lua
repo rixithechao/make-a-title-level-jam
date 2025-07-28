@@ -13,5 +13,10 @@ return {
         author = "Beta_Squared",
         title = "Pilgrim's Progress",
         fullTitle = "Little Nemo - 3 - a pilgrim's progress"
+    },
+    ["pain and parade.lvlx"] = {
+        author = "roykirbs",
+        title = "pain and parade",
+        fullTitle = "[Mighty] YEAHHHH!! - 17 - Fear and Parade"
     }
 }
