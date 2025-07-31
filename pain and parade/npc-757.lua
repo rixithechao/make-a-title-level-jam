@@ -162,7 +162,7 @@ local function ai(v)
 		v.ai3 = v.ai3 + 1
 		
 		if v.ai3 == 10 then
-			SFX.play(34)
+			SFX.play(25)
 			
 			local ball = NPC.spawn(config.ballId, v.x, v.y)
 			ball.direction = v.direction

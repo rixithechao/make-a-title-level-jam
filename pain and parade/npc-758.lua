@@ -11,8 +11,8 @@ npcManager.setNpcSettings{
 	
 	gfxwidth = 44,
 	width = 32,
-	height = 66,
-	gfxheight = 66,
+	height = 72,
+	gfxheight = 72,
 	
 	jumphurt = false,
 	
