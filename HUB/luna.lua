@@ -18,7 +18,9 @@ if  SaveData._hub == nil  or  SaveData._hub.countCache ~= #unmapped  then
 end
 
 local orderedLevels = SaveData._hub.levelOrder
+local lastLevelData
 
+local entranceFade = 0
 
 function onStart()
 
@@ -54,6 +56,11 @@ function onStart()
 
         local glow = NPC.spawn(668, pos.x, pos.y, player.section, true, true)
         glow.data._settings.brightness = 3
+
+        local thisLevelData = leveldata[orderedLevels[i]]
+        if  thisLevelData.thumbnail ~= nil  then
+            thisLevelData.thumbnailImg = Graphics.loadImageResolved("graphics/thumbnails/"..thisLevelData.thumbnail)
+        end
     end
 
     -- Hide the rest outside of the section
@@ -109,35 +116,51 @@ function onTick()
     local intersectingWarp = player:mem(0x5A,FIELD_WORD)
     if  intersectingWarp ~= nil  and  intersectingWarp > 0  then
         
-        local thisLevelData = leveldata[orderedLevels[intersectingWarp]]
-        
+        entranceFade = math.min(1,entranceFade+0.05)
+        lastLevelData = leveldata[orderedLevels[intersectingWarp]]
+
+        if  player.rawKeys.jump == KEYS_PRESSED  or  player.rawKeys.altJump == KEYS_PRESSED  then
+            player.keys.up = KEYS_DOWN
+        end
+    else
+        entranceFade = math.max(0, entranceFade-0.05)
+    end
+
+end
+
+function onDraw()
+    if  lastLevelData ~= nil  then
+
         local textPos = vector(400, 150)
         if  player.y + player.height - 32 < camera.y + 300  then
             textPos.y = 450
         end
         local fullTitle = ""
-        if  thisLevelData.fullTitle  then
-            fullTitle = "<br><br>"..thisLevelData.fullTitle
+        if  lastLevelData.fullTitle  then
+            fullTitle = "<br><br>"..lastLevelData.fullTitle
         end
         
+        if  lastLevelData.thumbnailImg  then
+            local fadeColor = Color.white * 0.67 * entranceFade
+
+            Graphics.drawScreen{
+                texture = lastLevelData.thumbnailImg,
+                color = fadeColor,
+                priority = -84
+            }
+        end
+
         textplus.print{
             x = textPos.x,
             y = textPos.y,
-            text = "<align center>"..thisLevelData.title.."<br>"..thisLevelData.author..fullTitle.."</align>",
+            text = "<align center>"..lastLevelData.title.."<br>"..lastLevelData.author..fullTitle.."</align>",
             pivot = vector(0.5,0.5),
 
             xscale = 2,
             yscale = 2,
-            color = Color.white
+            color = Color.white * entranceFade
         }
-
-        if  player.rawKeys.jump == KEYS_PRESSED  or  player.rawKeys.altJump == KEYS_PRESSED  then
-            player.keys.up = KEYS_DOWN
-        end
     end
 
-end
-
-function onEvent(eventName)
 end
 

@@ -1,0 +1,9 @@
+music:
+- Dreamy Land (Comet Summoner OST) by Seiichi Takamoto, Comoesta Higashitotsuka, Einosuke Nagao, kaos
+- Mumbo's Mountain (Banjo Kazooie OST) by Grant Kirkhope; SMW port by jneen
+- Up 'n' Down (Stunt Race FX OST) by Shinobu Amayake
+- Western Land (Mario Party 2 OST, Nintendo 64 Classics Volume I) by Hironao Yamamoto, Shohei Bando, Kazuhiko Sawaguchi; arranged by The Noble Demon (ft. Jason Foit)
+- Ska death / UN Owen Was Her? (Embodiment of the Scarlet Devil OST, Touhou Bakuon Jazz 4) by ZUN, arranged by Tokyo Active Neets
+
+code:
+- spawnzones.lua by Emral

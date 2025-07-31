@@ -1,5 +1,5 @@
 HEAD
-TL:"HUB";CPID:"SMBX2";
+TL:"HUB";XTRA:"{\n    \"player\"\: {\n        \"costume1\"\: \"A2XT-Demo\"\,\n        \"player1\"\: 1\,\n        \"setCostume1\"\: true\n    }\n}\n";CPID:"SMBX2";
 HEAD_END
 SECTION
 SC:0;L:-200800;R:-198400;T:-201216;B:-199392;MZ:24;MF:"HUB/Soulful Verdane (1 - SURROUND).spc|0\;e0";BG:40;XTRA:"{\n    \"darkness\"\: {\n        \"addbright\"\: true\,\n        \"ambient\"\: \"#00764dff\"\,\n        \"enableDarkness\"\: true\,\n        \"playerlight\"\: {\n            \"brightness\"\: 1\,\n            \"color\"\: \"#ffffffff\"\,\n            \"enabled\"\: true\,\n            \"flicker\"\: true\,\n            \"radius\"\: 600\n        }\n    }\,\n    \"effects\"\: {\n        \"col1\"\: \"#61b9acff\"\,\n        \"col2\"\: \"#1090a7ff\"\,\n        \"col3\"\: \"#3b639eff\"\,\n        \"col4\"\: \"#671988ff\"\,\n        \"intensity1\"\: 5\,\n        \"intensity3\"\: 4.99999999999999\,\n        \"priority1\"\: -98.9\,\n        \"screenEffects\"\: 9\,\n        \"type\"\: 1\,\n        \"weather\"\: 3\,\n        \"weatherPriority\"\: -99\n    }\n}\n";

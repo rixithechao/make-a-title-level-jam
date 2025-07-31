@@ -1,0 +1,13 @@
+{
+	"style" : "groupbox",
+	"title" : "Spawnzone Settings",
+	"layout": [
+				{
+					"control": "checkbox",
+					"name": "alsoGenerated",
+					"title": "Affect generated NPCs?",
+					"tooltip": "If <b>true</b>, this spawnzone will also affect the 'Spawned NPCs' layer that generated NPCs are placed in.",
+					"value-default": false
+				}
+	]
+}
