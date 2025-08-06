@@ -6,3 +6,4 @@ music:
 Lemmy NPC:
 - original script by KateBulka, edited by DRACalgar Law
 - sprites ripped by Barack Obama
+- King Bananasnake resprite by roykirbs

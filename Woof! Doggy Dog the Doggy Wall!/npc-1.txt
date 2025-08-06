@@ -1,0 +1,11 @@
+nohurt=1
+width=32
+height=32
+speed=0
+frames=1
+nohammer=1
+noshell=1
+harmlessthrown=1
+ignorethrownnpcs=1
+nowalldeath=0
+poweffect=0

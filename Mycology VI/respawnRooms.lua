@@ -2525,8 +2525,8 @@ respawnRooms.respawnSettings = {
     neverUseRespawnBGOs = false,
     -- The directions of each respawn BGO.
     respawnBGODirections = {
-        [851] = DIR_RIGHT,
-        [852] = DIR_LEFT,
+        [751] = DIR_RIGHT,
+        [752] = DIR_LEFT,
     },
 
     -- The sound effect played when the player dies. Can be nil, a string, or a number.

@@ -1,0 +1,13 @@
+nohurt=1
+grabside=1
+nohammer=1
+noshell=1
+width=110
+height=72
+gfxwidth=110
+gfxheight=72
+harmlessthrown=1
+ignorethrownnpcs=1
+nowalldeath=0
+poweffect=0
+foreground=1

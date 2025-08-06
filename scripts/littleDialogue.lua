@@ -1941,10 +1941,12 @@ function littleDialogue.onDraw()
 end
 
 function littleDialogue.onMessageBox(eventObj,text,playerObj,npcObj)
-    littleDialogue.create{
-        text = text,
-        speakerObj = npcObj or playerObj or player,
-    }
+    if  text ~= "[NOMESSAGE]"  then
+        littleDialogue.create{
+            text = text,
+            speakerObj = npcObj or playerObj or player,
+        }
+    end
 
     eventObj.cancelled = true
 end
