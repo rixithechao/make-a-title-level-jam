@@ -1,5 +1,5 @@
 HEAD
-TL:"Woof! Doggy Dog the Doggy Wall!";SZ:1;XTRA:"{\n    \"player\"\: {\n        \"setCostume1\"\: false\n    }\n}\n";CPID:"SMBX2";
+TL:"Woof! Doggy Dog the Doggy Wall!";SZ:1;XTRA:"{\n    \"player\"\: {\n        \"player1\"\: 1\,\n        \"setCostume1\"\: false\n    }\n}\n";CPID:"SMBX2";
 HEAD_END
 SECTION
 SC:0;L:-200000;R:-198976;T:-202720;B:-200000;MZ:24;MF:"Woof! Doggy Dog the Doggy Wall!/Tonoe the Pon.mp3";BG:6;CS:1;XTRA:"{\n    \"darkness\"\: {\n        \"playerlight\"\: {\n            \"radius\"\: 124\n        }\,\n        \"shadows\"\: 2\n    }\n}\n";

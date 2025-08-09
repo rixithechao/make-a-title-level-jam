@@ -1,0 +1,12 @@
+speed=5
+npcblocktop=1
+playerblocktop=1
+nohurt=1
+width=52
+gfxwidth=52
+gfxheight=38
+height=32
+notcointransformable=1
+nofireball=1
+noiceball=1
+useclearpipe=1

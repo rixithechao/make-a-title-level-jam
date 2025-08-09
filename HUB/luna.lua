@@ -6,21 +6,35 @@ hudoverride.visible.coins = false
 hudoverride.visible.lives = false
 
 
+-- Combined map of regular and special levels
+local allLevels = table.clone(leveldata.regular)
+
 
 -- Randomize the level order per save file
-local unmapped = table.unmap(leveldata)
+local unmappedRegulars = table.unmap(leveldata.regular)
 
-if  SaveData._hub == nil  or  SaveData._hub.countCache ~= #unmapped  then
+if  SaveData._hub == nil  or  SaveData._hub.countCache ~= #unmappedRegulars  then
     SaveData._hub = {
-        levelOrder = table.ishuffle(unmapped),
-        countCache = #unmapped
+        levelOrder = table.ishuffle(unmappedRegulars),
+        countCache = #unmappedRegulars
     }
 end
 
-local orderedLevels = table.iclone(SaveData._hub.levelOrder)
+-- Ordered lists of level filenames
+local levelOrder = {
+    regular = table.iclone(SaveData._hub.levelOrder),
+    special = {}
+}
+for  k,v in ipairs(leveldata.special)  do
+    levelOrder.special[k] = v.filename
+    allLevels[v.filename] = v
+end
+levelOrder.all = table.append(levelOrder.regular, levelOrder.special)
+
+
 local lastLevelData
 
-local showSpecial = true
+local showFinale = true
 
 local entranceFade = 0
 
@@ -54,12 +68,12 @@ local function setUpEntrance(args)
         sparkle.data._settings.particle = "p_entrance.ini"
         glow.data._settings.brightness = 3
 
-        if  args.requiredForSpecial  then
-            showSpecial = false
+        if  args.requiredForFinale  then
+            showFinale = false
         end
     end
 
-    local thisLevelData = leveldata[args.level]
+    local thisLevelData = args.data
     if  thisLevelData  and  thisLevelData.thumbnail ~= nil  then
         thisLevelData.thumbnailImg = Graphics.loadImageResolved("graphics/thumbnails/"..thisLevelData.thumbnail)
     end
@@ -76,70 +90,66 @@ function onStart()
     player.setCostume(CHARACTER_LINK, "A2XT-Sheath", true)
 
     
-    -- Set up the level entrances
     local boundary = Section(0).boundary
     local sectionCenter = vector((boundary.left+boundary.right)*0.5, (boundary.top+boundary.bottom)*0.5)
     local sectionSize = vector(boundary.right-boundary.left, boundary.bottom-boundary.top)
     local warps = Warp.get()
 
-    for  i=1, #orderedLevels  do
-        local percent = (i-1)/#orderedLevels
+    local specialWarpsOffset = #levelOrder.regular
+    local unusedWarpsStart = #levelOrder.regular + #levelOrder.special + 1
+
+    -- Regular level entrances
+    for  i=1, #levelOrder.regular  do
+        local percent = (i-1)/#levelOrder.regular
         local degrees = math.rad(360*percent)
         local pos = sectionCenter + vector(sectionSize.x*0.42*math.sin(degrees), sectionSize.y*0.41*math.cos(degrees))
 
-        local thisWarp = warps[i]
+        local thisFilename = levelOrder.regular[i]
 
         setUpEntrance{
             warp = warps[i],
             position = pos,
-            level = orderedLevels[i],
-            requiredForSpecial = true
+            level = thisFilename,
+            data = leveldata.regular[thisFilename],
+            requiredForFinale = true
         }
     end
 
     
     -- Special level entrances
-    local remainingWarpsStart = #orderedLevels+1
+    local finaleFilename = "finale placeholder name.lvlx"
+    local creditsFilename = "credits placeholder name.lvlx"
+    local finaleCompletion = EPISODE_LIB.completion.Get(finaleCompletion)
 
-    local specialFilename = "placeholder name.lvlx"
-    local specialCompletion = EPISODE_LIB.completion.Get(specialFilename)
+    allLevels[finaleFilename].cond = showFinale
+    allLevels[creditsFilename].cond = (finaleCompletion ~= nil  and  finaleCompletion.cleared == true)
 
-    for  _,v in ipairs{
-        {
-            cond = true,--showSpecial,
-            layerName = "??? Entrance",
-            filename = specialFilename,
-            warpIdx = #warps-1,
-            data = {title="???", author="???", thumbnail="question.png"}
-        },
-        {
-            cond = true,--specialCompletion.cleared,
-            layerName = "Credits Entrance",
-            filename = "credits placeholder name.lvlx",
-            warpIdx = #warps,
-            data = {title="Credits"}
-        }
-    }  do
-        if  v.cond  then
-            local thisLayer = Layer.get(v.layerName)
-            thisLayer:show(true)
-            local thisWarp = warps[v.warpIdx]
-            local pos = vector(thisWarp.entranceX + 0.5*thisWarp.entranceWidth, thisWarp.entranceY + 0.5*thisWarp.entranceHeight)
-            leveldata[v.filename] = v.data
-            
+    for  i=1, #levelOrder.special  do
+        local percent = (i-1)/#levelOrder.special
+        local degrees = math.rad(360*percent)
+        local pos = sectionCenter + vector(sectionSize.x*0.24*math.sin(degrees), sectionSize.y*0.23*math.cos(degrees))
+
+        local thisWarp = warps[i + specialWarpsOffset]
+        local thisFilename = levelOrder.special[i]
+        local thisLevelData = allLevels[thisFilename]
+
+        local bgBlock = Block.spawn(21, pos.x-80, pos.y-64)
+        bgBlock.width = 160
+        bgBlock.height = 128
+
+        if  thisLevelData.cond ~= false  then
             setUpEntrance{
                 warp = thisWarp,
                 position = pos,
-                level = v.filename,
+                level = thisFilename,
+                data = thisLevelData
             }
-
-            orderedLevels[v.warpIdx] = v.filename
         end
     end
 
 
-    -- Hide the rest of the warps outside of the section
-    for  i=remainingWarpsStart, #warps-2  do
+    -- Shove the rest of the warps outside of the section
+    for  i=unusedWarpsStart, #warps  do
         local thisWarp = warps[i]
         thisWarp.entranceX = boundary.right + 64
         thisWarp.exitX = boundary.right + 64
@@ -192,7 +202,7 @@ function onTick()
     if  intersectingWarp ~= nil  and  intersectingWarp > 0  then
         
         entranceFade = math.min(1,entranceFade+0.05)
-        lastLevelData = leveldata[orderedLevels[intersectingWarp]]
+        lastLevelData = allLevels[levelOrder.all[intersectingWarp]]
 
         if  player.rawKeys.jump == KEYS_PRESSED  or  player.rawKeys.altJump == KEYS_PRESSED  then
             player.keys.up = KEYS_DOWN
@@ -226,7 +236,7 @@ function onDraw()
             Graphics.drawScreen{
                 texture = lastLevelData.thumbnailImg,
                 color = fadeColor,
-                priority = -84
+                priority = -64
             }
         end
 
